@@ -1,0 +1,42 @@
+[
+  {
+    "event_id": "evt_lead_8f21",
+    "idempotency_key": "lead:8f21:submitted",
+    "event_type": "lead.form_submitted",
+    "occurred_at": "2026-09-06T12:10:00Z",
+    "source": "marketing-site",
+    "contact": {
+      "email": "alex@synthetic-labs.example",
+      "consent": true
+    },
+    "company": {
+      "name": "Synthetic Labs",
+      "employees": 240
+    },
+    "signals": {
+      "company_fit": 35,
+      "product_intent": 31,
+      "source_quality": 20
+    }
+  },
+  {
+    "event_id": "evt_lead_4c07",
+    "idempotency_key": "lead:4c07:submitted",
+    "event_type": "lead.form_submitted",
+    "occurred_at": "2026-09-06T12:18:00Z",
+    "source": "content-download",
+    "contact": {
+      "email": "morgan@small-studio.example",
+      "consent": true
+    },
+    "company": {
+      "name": "Small Studio",
+      "employees": 8
+    },
+    "signals": {
+      "company_fit": 15,
+      "product_intent": 17,
+      "source_quality": 12
+    }
+  }
+]

@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="RelayOps is an interactive event-driven automation case study demonstrating trigger logic, branching, API actions, retries, idempotency, and operational monitoring."
+    />
+    <meta name="theme-color" content="#0a0d14" />
+    <meta property="og:title" content="RelayOps | Event-Driven Automation Studio" />
+    <meta property="og:description" content="Trigger, branching, APIs, retries and execution monitoring in one interactive automation case study." />
+    <meta property="og:image" content="assets/relayops-preview.png" />
+    <title>RelayOps | Event-Driven Automation Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Main navigation">
+        <a class="brand" href="#workflow" aria-label="RelayOps home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" role="img"><path d="M7 8.5h8l3 5h7M7 23.5h8l3-5h7"/><circle cx="6" cy="8.5" r="2.5"/><circle cx="26" cy="13.5" r="2.5"/><circle cx="26" cy="18.5" r="2.5"/><circle cx="6" cy="23.5" r="2.5"/></svg>
+          </span>
+          <span>RelayOps</span>
+        </a>
+
+        <nav class="nav-list">
+          <a class="nav-item active" href="#workflow" data-section="workflow">
+            <svg viewBox="0 0 24 24"><path d="M5 5h4v4H5zM15 15h4v4h-4zM15 5h4v4h-4zM9 7h6M17 9v6M9 7v10h6"/></svg>
+            Live workflow
+          </a>
+          <a class="nav-item" href="#runs" data-section="runs">
+            <svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.3-5.7L4 8.5M4 4v4.5h4.5M12 8v4l3 2"/></svg>
+            Run history
+          </a>
+          <a class="nav-item" href="#reliability" data-section="reliability">
+            <svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.4 2.8 8.4 7 10 4.2-1.6 7-5.6 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+            Reliability
+          </a>
+          <a class="nav-item" href="#architecture" data-section="architecture">
+            <svg viewBox="0 0 24 24"><path d="M5 5h4v4H5zM15 5h4v4h-4zM10 15h4v4h-4zM7 9v3h5v3M17 9v3h-5"/></svg>
+            Architecture
+          </a>
+        </nav>
+
+        <div class="side-note">
+          <span class="eyebrow">Portfolio case study</span>
+          <p>Designed and built by<br /><strong>Martyna Piwka</strong></p>
+          <div class="synthetic-label"><span></span> Synthetic data only</div>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div class="health"><span class="pulse-dot"></span> Automation engine healthy</div>
+          <div class="top-actions">
+            <button class="icon-button" type="button" id="copyEvent" aria-label="Copy current event">
+              <svg viewBox="0 0 24 24"><rect x="8" y="8" width="11" height="11" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>
+            </button>
+            <a class="repo-link" href="https://github.com/piwkamartyna/relayops-automation-studio" target="_blank" rel="noreferrer">
+              View GitHub
+              <svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </a>
+          </div>
+        </header>
+
+        <section class="hero" id="workflow">
+          <div>
+            <div class="eyebrow">EVENT-DRIVEN AUTOMATION LAB</div>
+            <div class="title-line">
+              <h1>Lead qualification &amp; routing</h1>
+              <span class="status-badge"><span></span> Active</span>
+            </div>
+            <p class="hero-copy">A production-minded workflow that turns an inbound form event into a validated, enriched and routed revenue action.</p>
+          </div>
+          <div class="simulation-controls">
+            <label for="scenarioSelect">Test event</label>
+            <div class="control-row">
+              <select id="scenarioSelect">
+                <option value="priority">Enterprise lead · high intent</option>
+                <option value="nurture">Small team · early interest</option>
+                <option value="retry">Enrichment API · timeout</option>
+                <option value="duplicate">Duplicate webhook event</option>
+              </select>
+              <button class="run-button" id="runSimulation" type="button">
+                <svg viewBox="0 0 24 24"><path d="m9 7 8 5-8 5V7Z"/></svg>
+                Run event
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="metrics" aria-label="Automation performance metrics">
+          <div class="metric"><span>Runs · 30 days</span><strong id="runCount">1,284</strong><small>+18.4%</small></div>
+          <div class="metric"><span>Success rate</span><strong>99.3%</strong><small>Within SLO</small></div>
+          <div class="metric"><span>Median runtime</span><strong id="medianTime">2.1s</strong><small>−0.4s</small></div>
+          <div class="metric"><span>Failures recovered</span><strong id="recoveredCount">12</strong><small>Auto-retry</small></div>
+        </section>
+
+        <section class="automation-grid">
+          <div class="workflow-panel">
+            <div class="panel-heading">
+              <div>
+                <span class="eyebrow">WORKFLOW MAP</span>
+                <h2>From signal to action</h2>
+              </div>
+              <div class="legend"><span class="legend-dot idle"></span> Waiting <span class="legend-dot running"></span> Running <span class="legend-dot complete"></span> Complete</div>
+            </div>
+
+            <div class="flow-canvas" id="flowCanvas">
+              <div class="flow-step" data-node="trigger">
+                <span class="step-index">01</span>
+                <div class="step-icon webhook"><svg viewBox="0 0 24 24"><path d="M8 6a4 4 0 1 1 6.8 2.8L12 12M16 18a4 4 0 1 1-6.8-2.8L12 12"/><circle cx="12" cy="12" r="1.5"/></svg></div>
+                <div><span class="step-type">TRIGGER</span><h3>Form submitted</h3><p>Webhook · POST /events/leads</p></div>
+                <span class="step-state">Ready</span>
+              </div>
+              <div class="connector"><span></span></div>
+              <div class="flow-step" data-node="validate">
+                <span class="step-index">02</span>
+                <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M5 4h14v16H5zM8 9h8M8 13h5"/><path d="m14 16 1.5 1.5L19 14"/></svg></div>
+                <div><span class="step-type">TRANSFORM</span><h3>Validate &amp; normalize</h3><p>Schema check · field mapping · consent</p></div>
+                <span class="step-state">Waiting</span>
+              </div>
+              <div class="connector"><span></span></div>
+              <div class="flow-step" data-node="enrich">
+                <span class="step-index">03</span>
+                <div class="step-icon api"><svg viewBox="0 0 24 24"><path d="M8 9 4 12l4 3M16 9l4 3-4 3M14 6l-4 12"/></svg></div>
+                <div><span class="step-type">API CALL</span><h3>Enrich company</h3><p>Firmographics · retry ×3 · 8s timeout</p></div>
+                <span class="step-state">Waiting</span>
+              </div>
+              <div class="connector"><span></span></div>
+              <div class="flow-step condition" data-node="condition">
+                <span class="step-index">04</span>
+                <div class="step-icon condition-icon"><svg viewBox="0 0 24 24"><path d="M12 3 21 12 12 21 3 12 12 3Z"/><path d="M8 12h8"/></svg></div>
+                <div><span class="step-type">CONDITION</span><h3>Score ≥ 70?</h3><p>Fit + intent + company size</p></div>
+                <span class="step-state">Waiting</span>
+              </div>
+
+              <div class="branch-wrap">
+                <div class="branch branch-yes" data-branch="priority">
+                  <span class="branch-label">YES · PRIORITY</span>
+                  <div class="action-stack">
+                    <div class="mini-action" data-node="crm"><span class="app-icon hubspot">H</span><div><strong>Upsert CRM record</strong><small>Owner + lifecycle + score</small></div></div>
+                    <div class="mini-action" data-node="slack"><span class="app-icon slack">S</span><div><strong>Alert #sales-priority</strong><small>Context-rich Slack message</small></div></div>
+                    <div class="mini-action" data-node="task"><span class="app-icon task">✓</span><div><strong>Create owner task</strong><small>SLA due in 30 minutes</small></div></div>
+                  </div>
+                </div>
+                <div class="branch branch-no" data-branch="nurture">
+                  <span class="branch-label">NO · NURTURE</span>
+                  <div class="action-stack">
+                    <div class="mini-action" data-node="crm-nurture"><span class="app-icon hubspot">H</span><div><strong>Update CRM stage</strong><small>Lifecycle: nurture</small></div></div>
+                    <div class="mini-action" data-node="email"><span class="app-icon email">@</span><div><strong>Start email sequence</strong><small>Personalized 3-step nurture</small></div></div>
+                    <div class="mini-action" data-node="log"><span class="app-icon log">L</span><div><strong>Log decision</strong><small>Reason + rule version</small></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="inspector" aria-live="polite">
+            <div class="inspector-head">
+              <div><span class="eyebrow">EXECUTION</span><h2 id="runTitle">Awaiting event</h2></div>
+              <span class="run-id" id="runId">RUN —</span>
+            </div>
+            <div class="result-state" id="resultState">
+              <div class="result-icon"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/></svg></div>
+              <p>Select a test event and run the workflow to inspect its route, timing and outputs.</p>
+            </div>
+            <div class="event-summary" id="eventSummary">
+              <div><span>Event</span><code>lead.form_submitted</code></div>
+              <div><span>Source</span><code>marketing-site</code></div>
+              <div><span>Idempotency key</span><code id="eventKey">evt_demo_001</code></div>
+            </div>
+            <div class="execution-log">
+              <div class="log-heading"><span>Execution log</span><span id="stepCounter">0 / 0 steps</span></div>
+              <ol id="logList">
+                <li class="muted">No execution started</li>
+              </ol>
+            </div>
+            <div class="output-box" id="outputBox">
+              <span>OUTPUT</span>
+              <pre id="outputJson">{
+  "status": "ready"
+}</pre>
+            </div>
+          </aside>
+        </section>
+
+        <section class="runs-section" id="runs">
+          <div class="section-heading">
+            <div><span class="eyebrow">OBSERVABILITY</span><h2>Recent executions</h2></div>
+            <p>Every decision is traceable from the source event to the final downstream action.</p>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Run</th><th>Event</th><th>Route</th><th>Status</th><th>Duration</th><th>Started</th></tr></thead>
+              <tbody id="runsTable">
+                <tr><td><code>#1284</code></td><td>lead.form_submitted</td><td>Priority</td><td><span class="table-status success">Success</span></td><td>1.8s</td><td>2 min ago</td></tr>
+                <tr><td><code>#1283</code></td><td>lead.form_submitted</td><td>Nurture</td><td><span class="table-status success">Success</span></td><td>1.4s</td><td>11 min ago</td></tr>
+                <tr><td><code>#1282</code></td><td>lead.form_submitted</td><td>Priority</td><td><span class="table-status recovered">Recovered</span></td><td>4.9s</td><td>18 min ago</td></tr>
+                <tr><td><code>#1281</code></td><td>lead.form_submitted</td><td>Duplicate</td><td><span class="table-status skipped">Skipped</span></td><td>0.2s</td><td>24 min ago</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="reliability-section" id="reliability">
+          <div class="section-heading">
+            <div><span class="eyebrow">PRODUCTION THINKING</span><h2>Built beyond the happy path</h2></div>
+            <p>The workflow makes failures visible, prevents duplicate actions and keeps humans in control.</p>
+          </div>
+          <div class="reliability-grid">
+            <article><span class="reliability-number">01</span><h3>Idempotency</h3><p>Webhook keys stop duplicate CRM updates, messages and owner tasks.</p></article>
+            <article><span class="reliability-number">02</span><h3>Retry policy</h3><p>Transient API failures retry with exponential backoff before escalation.</p></article>
+            <article><span class="reliability-number">03</span><h3>Dead-letter queue</h3><p>Unresolved events are preserved with payload, reason and replay controls.</p></article>
+            <article><span class="reliability-number">04</span><h3>Human review</h3><p>Ambiguous scores are routed to an owner instead of forcing a risky action.</p></article>
+          </div>
+        </section>
+
+        <section class="architecture-section" id="architecture">
+          <div class="section-heading">
+            <div><span class="eyebrow">SYSTEM DESIGN</span><h2>Integration architecture</h2></div>
+            <p>Vendor-neutral logic that can be implemented in n8n, Make, Zapier or a custom API service.</p>
+          </div>
+          <div class="architecture-flow">
+            <div class="architecture-node"><span>01</span><strong>Event sources</strong><small>Forms · Stripe · CRM · app</small></div>
+            <div class="architecture-arrow"><svg viewBox="0 0 32 16"><path d="M1 8h28M24 3l5 5-5 5"/></svg></div>
+            <div class="architecture-node"><span>02</span><strong>Event gateway</strong><small>Auth · schema · deduplication</small></div>
+            <div class="architecture-arrow"><svg viewBox="0 0 32 16"><path d="M1 8h28M24 3l5 5-5 5"/></svg></div>
+            <div class="architecture-node featured"><span>03</span><strong>Rules engine</strong><small>Conditions · routing · retries</small></div>
+            <div class="architecture-arrow"><svg viewBox="0 0 32 16"><path d="M1 8h28M24 3l5 5-5 5"/></svg></div>
+            <div class="architecture-node"><span>04</span><strong>Action layer</strong><small>CRM · Slack · email · tasks</small></div>
+            <div class="architecture-arrow"><svg viewBox="0 0 32 16"><path d="M1 8h28M24 3l5 5-5 5"/></svg></div>
+            <div class="architecture-node"><span>05</span><strong>Monitoring</strong><small>Logs · alerts · replay</small></div>
+          </div>
+        </section>
+
+        <footer>
+          <div><strong>RelayOps</strong><span>Event-Driven Automation Studio</span></div>
+          <p>Fictional company, synthetic events and simulated outcomes. No client or production data.</p>
+        </footer>
+      </main>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite">Event payload copied</div>
+    <script src="assets/app.js"></script>
+  </body>
+</html>
