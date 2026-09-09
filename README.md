@@ -2,7 +2,7 @@
 
 ![RelayOps preview](dist/assets/relayops-preview.svg)
 
-**Live demo:** GitHub Pages deployment is configured in this repository.
+**Live demo:** [piwkamartyna.github.io/relayops-automation-studio](https://piwkamartyna.github.io/relayops-automation-studio/)
 
 RelayOps is an interactive portfolio case study showing how a business event becomes a reliable operational outcome. The demo processes a synthetic inbound lead through webhook validation, field normalization, company enrichment, scoring, branching and downstream actions, while exposing retries, idempotency and execution logs.
 
