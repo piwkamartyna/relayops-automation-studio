@@ -25,42 +25,42 @@
     <text x="24" y="31" fill="#68758a" font-family="monospace" font-size="10" letter-spacing="1.5">LIVE WORKFLOW</text>
 
     <g transform="translate(24 56)">
-      <rect width="176" height="76" rx="12" fill="#151b27" stroke="#4d3b79"/>
-      <rect x="14" y="15" width="44" height="44" rx="10" fill="#221b37"/>
+      <rect width="180" height="76" rx="12" fill="#151b27" stroke="#4d3b79"/>
+      <rect x="12" y="17" width="40" height="40" rx="10" fill="#221b37"/>
       <path d="M27 28a7 7 0 1 1 12 5l-5 5m9 7a7 7 0 1 1-12-5l5-5" fill="none" stroke="#a889ff" stroke-width="2" stroke-linecap="round"/>
-      <text x="70" y="29" fill="#68758a" font-family="monospace" font-size="8">TRIGGER</text>
-      <text x="70" y="49" fill="#f4f7fb" font-family="Arial, sans-serif" font-size="14" font-weight="700">Form submitted</text>
-      <text x="70" y="64" fill="#93a0b5" font-family="Arial, sans-serif" font-size="9">Authenticated webhook</text>
+      <text x="62" y="29" fill="#68758a" font-family="monospace" font-size="8">TRIGGER</text>
+      <text x="62" y="49" fill="#f4f7fb" font-family="Arial, sans-serif" font-size="13" font-weight="700">New lead</text>
+      <text x="62" y="64" fill="#93a0b5" font-family="Arial, sans-serif" font-size="9">Webhook received</text>
     </g>
-    <g stroke="#4f8cff" stroke-width="2" fill="none"><path d="M208 94h44"/><path d="m246 89 6 5-6 5"/></g>
+    <g stroke="#4f8cff" stroke-width="2" fill="none"><path d="M210 94h16"/><path d="m220 89 6 5-6 5"/></g>
 
-    <g transform="translate(252 56)">
-      <rect width="176" height="76" rx="12" fill="#151b27" stroke="#2e4d7c"/>
-      <rect x="14" y="15" width="44" height="44" rx="10" fill="#17233b"/>
+    <g transform="translate(232 56)">
+      <rect width="188" height="76" rx="12" fill="#151b27" stroke="#2e4d7c"/>
+      <rect x="12" y="17" width="40" height="40" rx="10" fill="#17233b"/>
       <path d="m27 28-7 9 7 9m18-18 7 9-7 9m-8-23-4 28" fill="none" stroke="#4f8cff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      <text x="70" y="29" fill="#68758a" font-family="monospace" font-size="8">API CALL</text>
-      <text x="70" y="49" fill="#f4f7fb" font-family="Arial, sans-serif" font-size="14" font-weight="700">Enrich company</text>
-      <text x="70" y="64" fill="#93a0b5" font-family="Arial, sans-serif" font-size="9">Retry ×3 · 8s timeout</text>
+      <text x="62" y="29" fill="#68758a" font-family="monospace" font-size="8">API CALL</text>
+      <text x="62" y="49" fill="#f4f7fb" font-family="Arial, sans-serif" font-size="13" font-weight="700">Enrich data</text>
+      <text x="62" y="64" fill="#93a0b5" font-family="Arial, sans-serif" font-size="9">Retry enabled</text>
     </g>
-    <g stroke="#4f8cff" stroke-width="2" fill="none"><path d="M436 94h44"/><path d="m474 89 6 5-6 5"/></g>
+    <g stroke="#4f8cff" stroke-width="2" fill="none"><path d="M426 94h16"/><path d="m436 89 6 5-6 5"/></g>
 
-    <g transform="translate(480 56)">
-      <rect width="152" height="76" rx="12" fill="#151b27" stroke="#654c24"/>
-      <rect x="14" y="15" width="44" height="44" rx="10" fill="#2b2214"/>
+    <g transform="translate(448 56)">
+      <rect width="164" height="76" rx="12" fill="#151b27" stroke="#654c24"/>
+      <rect x="12" y="17" width="40" height="40" rx="10" fill="#2b2214"/>
       <path d="m36 22 16 15-16 15-16-15 16-15Z" fill="none" stroke="#f4ba56" stroke-width="2"/>
-      <text x="70" y="29" fill="#68758a" font-family="monospace" font-size="8">CONDITION</text>
-      <text x="70" y="49" fill="#f4f7fb" font-family="Arial, sans-serif" font-size="14" font-weight="700">Score ≥ 70?</text>
-      <text x="70" y="64" fill="#93a0b5" font-family="Arial, sans-serif" font-size="9">Route decision</text>
+      <text x="62" y="29" fill="#68758a" font-family="monospace" font-size="8">CONDITION</text>
+      <text x="62" y="49" fill="#f4f7fb" font-family="Arial, sans-serif" font-size="13" font-weight="700">Score ≥ 70</text>
+      <text x="62" y="64" fill="#93a0b5" font-family="Arial, sans-serif" font-size="9">Conditional route</text>
     </g>
-    <g stroke="#4f8cff" stroke-width="2" fill="none"><path d="M640 94h44"/><path d="m678 89 6 5-6 5"/></g>
+    <g stroke="#4f8cff" stroke-width="2" fill="none"><path d="M618 94h16"/><path d="m628 89 6 5-6 5"/></g>
 
-    <g transform="translate(684 56)">
-      <rect width="140" height="76" rx="12" fill="#151b27" stroke="#3c6541"/>
-      <circle cx="34" cy="37" r="21" fill="#172719"/>
-      <path d="m24 37 7 7 14-15" fill="none" stroke="#9ee866" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-      <text x="66" y="31" fill="#68758a" font-family="monospace" font-size="8">ACTIONS</text>
-      <text x="66" y="49" fill="#f4f7fb" font-family="Arial, sans-serif" font-size="13" font-weight="700">CRM · Slack</text>
-      <text x="66" y="64" fill="#93a0b5" font-family="Arial, sans-serif" font-size="9">Task created</text>
+    <g transform="translate(640 56)">
+      <rect width="184" height="76" rx="12" fill="#151b27" stroke="#3c6541"/>
+      <circle cx="32" cy="37" r="20" fill="#172719"/>
+      <path d="m23 37 6 6 13-14" fill="none" stroke="#9ee866" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="60" y="29" fill="#68758a" font-family="monospace" font-size="8">ACTIONS</text>
+      <text x="60" y="49" fill="#f4f7fb" font-family="Arial, sans-serif" font-size="13" font-weight="700">CRM + notify</text>
+      <text x="60" y="64" fill="#93a0b5" font-family="Arial, sans-serif" font-size="9">Task · Slack · email</text>
     </g>
 
     <g transform="translate(24 170)">
